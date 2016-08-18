@@ -75,15 +75,15 @@ WSGI_APPLICATION = 'beltreview.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':{
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'books',
-        'USER': 'gypsybel'
-        'PASSWORD':'clr86tink',
+        'USER': 'gypsybel',
+        'PASSWORD': 'clr86tink',
         'HOST': 'localhost',
         'PORT': '',
     }
-}
+}    
 
 
 # Password validation
