@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div id="nav">
+	<a href="/bookhome">Home</a>
+	<a href="/logout">Logout</a>
+</div>
+	<div id="main">
+		<h1>Add a New Book title and a Review:</h1>
+		<form action="/add" method="POST">
+			Book Title: <input type="text" name="title">
+			Author:
+				Choose from the list: <select name="select_author">
+					<option></option>
+					{% for book in books %}
+						<option>{{book.author}}</option>
+					{% endfor %}
+				</select>
+				Or add a new author: <input type="text" name="add_author">
+			Review: <input type="text" name="review">
+			Rating: <select name="rating">
+						<option></option>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select> stars.
+				<button>Add Book and Review</button>
+			{% csrf_token %}			
+		</form>
+	</div>
+</body>
+</html>

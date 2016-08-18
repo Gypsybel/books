@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div id="main">
+	<h1>Welcome!</h1>
+	<div id="register">
+		<p>Register</p>
+		<form action="/register" method="POST">
+			Name: <input type="text" name="name">
+			Alias: <input type="text" name="alias">
+			Email: <input type="email" name="email">
+			Password: <input type="password" name="password">
+			*Password should be at least 8 characters
+			Confrim PW: <input type="password" name="confirm_pw">
+			<button>Register</button>
+			{% csrf_token %}
+		</form>
+	</div>
+	<div id="login">
+		<p>Login</p>
+		<form action="/login" method="POST">	
+			Email: <input type="email" name="email">
+			Password: <input type="password" name="password">
+			<button>Login</button>
+			{% csrf_token %}			
+		</form> 			
+	</div>
+	{% for message in messages %}
+		<p>{{message.message}}</p>
+	{% endfor %}
+</div>
+</body>
+</html>

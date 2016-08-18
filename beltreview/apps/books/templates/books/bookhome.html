@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books Home</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div id="nav">
+		Welcome {{request.session.user.alias}}
+		<a href="/bookhome">Home</a>
+		<a href="/addbook">Add Book and Review</a>
+		<a href="/logout">Logout</a>
+	</div>
+	<div>
+		<h2>Recent Book Reviews:</h2>
+		{% for review in reviews %}
+			{% for book in books %}
+				{% if review.book_id == book %}
+					<p><a href="/bookreview/{{book.id}}">{{book.title}}</a><p>
+					<p>Rating: {{review.rating}}</p>
+					{% for user in users %}
+						{% if user == review.user_id %}
+							<p><a href="/user/{{user.id}}">{{user.alias}} </a>says: {{review.review}}<p>
+							<p>Posted on {{review.created_at}}<p>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</div>
+	<div>
+		<h2>Other Books with Reviews:</h2>
+		<div style="height:220px;width:200px;border:1px solid #ccc;overflow:auto;">
+			{% for book in books %}
+				<p><a href="/bookreview/{{book.id}}">{{book.title}}</a></p>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
